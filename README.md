@@ -75,10 +75,10 @@ newgrp docker
 + Go to directory the projects/summa directory and rename the file example-env to .env and Uncomment the line
     
 + Go to directory the /workspace and run the following commands from terminal
-    docker-compose up -d
+    docker-compose up -d --build
     make composer-config
-    make lexik-certs
     make doctrine-migration
+    make lexik-certs
     make seed-fixtures
     
 + If during the compilation (docker-compose up -d) there is an error example: 

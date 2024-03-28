@@ -35,12 +35,18 @@ composer-config:
 	docker exec server-summa-develop composer require maker orm-fixtures fakerphp/faker doctrine twig symfony/security-bundle symfony/password-hasher jms/serializer-bundle friendsofsymfony/rest-bundle symfony/maker-bundle symfony/orm-pack --with-all-dependencies lexik/jwt-authentication-bundle:* symfony/http-client nelmio/api-doc-bundle symfony/asset symfony/twig-bundle symfony/validator
 	docker exec server-summa-develop composer require everapi/freecurrencyapi-php
 
-lexik-certs: ## Installs composer dependencies
-	docker exec -i server-summa-develop symfony console lexik:jwt:generate-keypair
-
 doctrine-migration:
 	docker exec -i server-summa-develop symfony console make:migration
 	docker exec -i server-summa-develop symfony console doctrine:migrations:migrate
+
+lexik-certs: ## Installs composer dependencies
+	docker exec -i server-summa-develop symfony console lexik:jwt:generate-keypair
+
+#doctrine-generate-migration:
+#	docker exec -i server-summa-develop symfony console make:migration
+#
+#doctrine-run-migrations:
+#	docker exec -i server-summa-develop symfony console doctrine:migrations:migrate
 
 seed-fixtures: ## Installs composer dependencies
 	docker exec -i server-summa-develop symfony console doctrine:fixtures:load
